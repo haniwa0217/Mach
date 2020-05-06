@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\CheckExtensionServices;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
-use App\MOdels\User; //追加
+use App\Models\User; //追加
 use App\Services\FileUploadServices;
 use App\Http\Request\ProfileRequest; 
 
@@ -31,7 +31,7 @@ class UserController extends Controller
     }
     
     // updateメソッドでは、 引数に$requestと$idをとっています。
-    public function update($id, ProfileRequest $request) 
+    public function update($id, Request $request) 
     {
         $user = User::findorFail($id); //$idにあうユーザー情報を取得
         

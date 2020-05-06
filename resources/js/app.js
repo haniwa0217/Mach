@@ -6,7 +6,7 @@
 
 require('./bootstrap');
 
-require('./users'); //追加
+require('./users');
 
 require('./jquery.jTinder'); //追加
 

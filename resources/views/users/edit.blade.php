@@ -55,7 +55,7 @@
  </div>
 
    <div class="text-center">
-     <button type="submit" class="btn submitBtn">1変更する</button>
+     <button type="submit" class="btn submitBtn">変更する</button>
    </div>
  </form>
  </div>
