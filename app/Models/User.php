@@ -40,11 +40,11 @@ class User extends Authenticatable
     //追加
     public function toUserId()
     {
-        return $this->hasMany('App\Reaction', 'to_user_id', 'id'); //hasMany(相手のモデル名, 相手モデルのID, 自モデルのID) という順
+        return $this->hasMany('App\Models\Reaction', 'to_user_id', 'id'); //hasMany(相手のモデル名, 相手モデルのID, 自モデルのID) という順
     }
 
     public function fromUserId()
     {
-        return $this->hasMany('App\Reaction', 'from_user_id', 'id');
+        return $this->hasMany('App\Models\Reaction', 'from_user_id', 'id');
     }
 }
