@@ -17,6 +17,8 @@ class CreateReactionsTable extends Migration
             $table->integer('to_user_id'); //追加
             $table->integer('from_user_id'); //追加
             $table->integer('status'); //追加
+            $table->timestamps(); //追加
+
         });
     }
 

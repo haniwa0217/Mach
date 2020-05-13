@@ -49505,8 +49505,7 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./users */ "./resources/js/users.js"); //追加
-
+__webpack_require__(/*! ./users */ "./resources/js/users.js");
 
 __webpack_require__(/*! ./jquery.jTinder */ "./resources/js/jquery.jTinder.js"); //追加
 
@@ -49662,11 +49661,65 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$("#tinderslide").jTinder();
+//$("#tinderslide").jTinder();
+//$('.actions .like, .actions .dislike').click(function(e){
+//    e.preventDefault();
+//    $("#tinderslide").jTinder($(this).attr('class'));
+//});
+var currentUserIndex = 0;
+
+var postReaction = function postReaction(to_user_id, reaction) {
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    type: "POST",
+    url: "/api/like",
+    data: {
+      to_user_id: to_user_id,
+      from_user_id: from_user_id,
+      reaction: reaction
+    },
+    success: function success(j_data) {
+      console.log("success");
+    }
+  });
+};
+
+$("#tinderslide").jTinder({
+  onDislike: function onDislike(item) {
+    currentUserIndex++;
+    checkUserNum();
+    var to_user_id = item[0].dataset.user_id;
+    postReaction(to_user_id, 'dislike');
+  },
+  onLike: function onLike(item) {
+    currentUserIndex++;
+    checkUserNum();
+    var to_user_id = item[0].dataset.user_id;
+    postReaction(to_user_id, 'like');
+  },
+  animationRevertSpeed: 200,
+  animationSpeed: 400,
+  threshold: 1,
+  likeSelector: '.like',
+  dislikeSelector: '.dislike'
+});
 $('.actions .like, .actions .dislike').click(function (e) {
   e.preventDefault();
   $("#tinderslide").jTinder($(this).attr('class'));
 });
+
+function checkUserNum() {
+  // スワイプするユーザー数とスワイプした回数が同じになればaddClassする
+  if (currentUserIndex === usersNum) {
+    $(".noUser").addClass("is-active");
+    $("#actionBtnArea").addClass("is-none");
+    return;
+  }
+}
 
 /***/ }),
 
@@ -50411,8 +50464,8 @@ $(document).on("change", "#file_photo", function (e) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! c:\xampp\htdocs\mach\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! c:\xampp\htdocs\mach\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\mach\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\mach\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
