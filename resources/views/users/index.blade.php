@@ -4,8 +4,8 @@
 
 <div class="matchingPage">
    <header class="header">
-       <i class>="fas fa-comments fa-3x"></i>
-       <div class="header_logo"><a href="{{route('home')}}"><img src="/storage/images/techipit-match-icon.png"></a></div>
+   <i class="fas fa-comments fa-3x"></i>
+       <div class="header_logo"><a href="{{route('home')}}"><img src="/storage/images/techpit-match-icon (1).png"></a></div>
    </header>
    <div class="container">
       <div class="mt-5">
@@ -17,11 +17,11 @@
               <div class="matchingPerson_img"><img src="/storage/images/{{ $user->img_name}}"></div>
                  <div class="matchingPerson_name">{{ $user->name }}</div>
 
-                <from method="POST" action="{{ route('chat.show') }}">
+                <form method="POST" action="{{ route('chat.show') }}">
                     @csrf
                     <input name="user_id" type="hidden" value="{{$user->id}}">
                     <button type="submit" class="chatForm_btn">チャットを開く</button>
-                </from>
+                </form>
             
             </div>
            @endforeach

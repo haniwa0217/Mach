@@ -1,17 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-//追加
+
+use Illuminate\Http\Request;
+
+// ここから追加
 use App\Models\Reaction;
 use App\Models\User;
 use Auth;
 
-use App\Controller\Status;
-//ここまで
+use App\Constants\Status;
+// ここまで追加
 
 class MatchingController extends Controller
 {
-    //追加
+    // ここから追加
     public static function index(){
 
         $got_reaction_ids = Reaction::where([
@@ -19,16 +22,16 @@ class MatchingController extends Controller
             ['status', Status::LIKE]
             ])->pluck('from_user_id');
 
-        $matching_ids = Reaction::whereIn('id' , $matching_ids)->get();
+        $matching_ids = Reaction::whereIn('to_user_id', $got_reaction_ids)
         ->where('status', Status::LIKE)
         ->where('from_user_id', Auth::id())
         ->pluck('to_user_id');
 
-        $matching_users = User::whereIn('id' , $matching_ids)->get();
-
+        $matching_users = User::whereIn('id', $matching_ids)->get();
+        
         $match_users_count = count($matching_users);
 
         return view('users.index', compact('matching_users', 'match_users_count'));
     }
-    //ここまで
+    // ここまで追加
 }
