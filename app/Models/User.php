@@ -51,12 +51,12 @@ class User extends Authenticatable
     //追加
     public function chatMessages()
     {
-        return $this->hasMany('App\ChatMessage');
+        return $this->hasMany('App\Models\ChatMessage');
     }
 
     public function chatRoomUsers()
     {
-        return $this->hasMany('App\ChatRoomUsers');
+        return $this->hasMany('App\Models\ChatRoomUsers');
     }
     //ここまで
 }

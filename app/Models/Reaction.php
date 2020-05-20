@@ -13,11 +13,11 @@ class Reaction extends Model
     //Relation　Reactionモデルからそれぞれ1つのidを参照、belongsToを使う。belongsTo(相手のモデル名, 自モデルのID, 相手のID名)
     public function toUserId()
     {
-        return $this->belongsTo('App\User', 'to_user_id', 'id');
+        return $this->belongsTo('App\Models\User', 'to_user_id', 'id');
     }
 
     public function fromUserId()
     {
-        return $this->belongsTo('App\User', 'from_user_id','id');
+        return $this->belongsTo('App\Models\User', 'from_user_id','id');
     }
 }

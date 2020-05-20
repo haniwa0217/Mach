@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 //追加
 use Illuminate\Http\Request;
-use App\ChatRoom;
-use App\ChatRoomUser;
-use App\ChatMessage;
+use App\Models\ChatRoom;
+use App\Models\ChatRoomUser;
+use App\Models\ChatMessage;
 use App\Models\User;
 use App\Events\ChatPusher;
 use Auth;
@@ -58,7 +58,7 @@ class ChatController extends Controller
     $chat_room_user_name = $chat_room_user->name;
 
     $chat_messages = ChatMessage::where('chat_room_id',$chat_room_id)
-    ->orderby('create_at')
+    ->orderby('created_at')
     ->get();
 
     return view('chat.show',
