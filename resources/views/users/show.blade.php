@@ -2,45 +2,39 @@
 
 @section('content')
 
-<div class="chatPage">
-  <header class="header">
-  <a href="{{route('matching')}}" class="linkToMatching"></a>
-    <div class="chatPartner">
-      <div class="chatPartner_img"><img src="/storage/images/{{$chat_room_user -> img_name}}"></div>
-      <div class="chatPartner_name">{{ $chat_room_user -> name }}</div>
+<div class='usershowPage'>
+  <div class='container'>
+    <header class="header">
+      <p class='header_logo'>
+      <a href="{{ route('home') }}">
+      <img src="/storage/images/techpit-match-icon.png">
+      </a>
+      </p>
+    </header>
+    <div class='userInfo'>
+      <div class='userInfo_img'>
+      <img src="/storage/images/{{$user -> img_name}}">
+      </div>
+      <div class='userInfo_name'>{{ $user -> name }}</div>
+      <div class='userInfo_selfIntroduction'>{{ $user -> self_introduction }}</div>
     </div>
-  </header>
-  <div class="container">
-    <div class="messagesArea messages">
-    @foreach($chat_messages as $message)
-    <div class="message">
-      @if($message->user_id = Auth::id())
-        <span>{{Auth::user()->name}}</span>
-      @else
-        <span>{{$chat_room_user_name}}</span>
-      @endif
-      
-      <div class="commonMessage">
-        <div>
-        {{$message->message}}
+    
+      <div class='userAction'>
+        <div class="userAction_edit userAction_common">
+          <i class="fas fa-edit fa-2x"></i>
+          <span>情報を編集</span>
+        </div>
+        <div class='userAction_logout userAction_common'>
+        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();"><i class="fas fa-cog fa-2x"></i></a>
+          <span>ログアウト</span>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+          </form>
         </div>
       </div>
-    </div>
-    @endforeach
-    </div>
+    
   </div>
-  <form class="messageInputForm">
-    <div class='container'>
-      <input type="text" data-behavior="chat_message" class="messageInputForm_input" placeholder="メッセージを入力...">
-    </div>
-  </form>
 </div>
-
-<script>
-var chat_room_id = {{ $chat_room_id }};
-var user_id = {{ Auth::user()->id }};
-var current_user_name = "{{ Auth::user()->name }}";
-var chat_room_user_name = "{{ $chat_room_user_name }}";
-</script>
 
 @endsection

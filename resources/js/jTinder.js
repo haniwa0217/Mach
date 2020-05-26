@@ -1,10 +1,3 @@
-//$("#tinderslide").jTinder();
-//$('.actions .like, .actions .dislike').click(function(e){
-//    e.preventDefault();
-//    $("#tinderslide").jTinder($(this).attr('class'));
-//});
-
-
 var currentUserIndex = 0;
 var postReaction = function (to_user_id, reaction) {
   $.ajaxSetup({

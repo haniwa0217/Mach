@@ -32,7 +32,7 @@
 
 <script>
   var usersNum = {{ $userCount }};
-  var from_user_id = {{ $from_user_id }};
+  var from_user_id = {{ $from_user_id }} ;
 </script>
 
 @endsection

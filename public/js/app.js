@@ -55737,11 +55737,6 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-//$("#tinderslide").jTinder();
-//$('.actions .like, .actions .dislike').click(function(e){
-//    e.preventDefault();
-//    $("#tinderslide").jTinder($(this).attr('class'));
-//});
 var currentUserIndex = 0;
 
 var postReaction = function postReaction(to_user_id, reaction) {
