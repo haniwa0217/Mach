@@ -26,7 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = User::all(); //追加
+        //$users = User::all(); 
+        $users = User::Where('id','<>', Auth::id())->get(); //追加
 
         $userCount = $users->count(); //追加
         $from_user_id = Auth::id(); //追加

@@ -52,7 +52,7 @@ class ChatController extends Controller
     }
 
     //チャットルーム相手のユーザー情報を取得
-    $chat_room_user = User::findOrfail($matching_user_id);
+    $chat_room_user = User::findOrFail($matching_user_id);
 
     //チャット相手のユーザー名を取得(JS用)
     $chat_room_user_name = $chat_room_user->name;
