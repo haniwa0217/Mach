@@ -62,4 +62,11 @@ class UserController extends Controller
         return redirect('home');
     }
 
+    public function delete (Request $request,$id)
+    {
+        User::findorFail($id)->delete();
+
+        return redirect  (route('admin.home'));
+    }
+
 }

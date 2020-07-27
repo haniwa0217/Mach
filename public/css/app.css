@@ -16844,16 +16844,45 @@ readers do not read off random characters that represent icons */
 }
 
 .loginPage_contents_title {
-  margin-top: 12vh;
+  margin-top: 12;
+  position: relative;
+  padding: 20px;
+  background: linear-gradient(to right, #ff7c6f, #ffc994);
+  color: white;
+  font-weight: lighter;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.56);
 }
 
-.loginPage_contents_btn {
+.loginPage_contents .btn-square-toy {
+  position: relative;
+  display: inline-block;
+  padding: 20px;
+  text-decoration: none;
+  background: #00BCD4;
+  /*背景色*/
+  color: #00BCD4;
+  /*=背景色*/
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  border-bottom: solid 2px #118e9e;
+  border-radius: 30px;
+  font-weight: bold;
+  text-shadow: -1px -1px rgba(255, 255, 255, 0.44), 1px 1px rgba(0, 0, 0, 0.38);
+}
+
+.loginPage_contents .btn-square-toy:active {
+  /*押したとき*/
+  border-bottom: solid 2px #00BCD4;
+  box-shadow: none;
+  text-shadow: -1px -1px rgba(255, 255, 255, 0.3), 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.loginPage .loginPage_contents_account {
   display: block;
   max-width: 400px;
   padding: 20px;
   margin: 0 auto;
   border-radius: 30px;
-  background: #fd5068;
+  background: #5efd50;
   color: #fff;
 }
 
